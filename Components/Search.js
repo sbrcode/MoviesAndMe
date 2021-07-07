@@ -4,18 +4,19 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 export default class Search extends React.Component {
   render() {
     return (
-      <View style={{ marginTop: 20, backgroundColor: 'red' }}>
-        <TextInput
-          style={ styles.textinput }
-          placeholder="Titre du Film"
-        />
-        <Button title="Rechercher" onPress={() => {}}/>
+      <View style={styles.main_container}>
+        <TextInput style={styles.textinput} placeholder="Titre du Film" />
+        <Button title="Rechercher" onPress={() => {}} />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  main_container: {
+    marginTop: 20,
+    flex: 1
+  },
   textinput: {
     marginLeft: 5,
     marginRight: 5,
