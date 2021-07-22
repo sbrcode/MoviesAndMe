@@ -50,7 +50,7 @@ export default class Search extends React.Component {
     if (this.state.isLoading) {
       return (
         <View style={styles.loading_container}>
-          <ActivityIndicator size='large' />
+          <ActivityIndicator size='large' color='blue' />
         </View>
       )
     }
