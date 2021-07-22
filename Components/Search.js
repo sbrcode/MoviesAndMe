@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, Button, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
-import FilmItems from './FilmItems';
+import FilmItem from './FilmItem';
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi';
 // import films from '../Helpers/filmsData';
 
@@ -56,7 +56,13 @@ export default class Search extends React.Component {
     }
   }
 
+  _displayDetailForFilm = (idFilm) => {
+    // console.log("Display Film with id " + idFilm)
+    this.props.navigation.navigate("FilmDetail", { idFilm: idFilm })
+  }
+
   render() {
+    // console.log(this.props);
     return (
       <View style={styles.main_container}>
         <TextInput
@@ -69,7 +75,7 @@ export default class Search extends React.Component {
         <FlatList
           data={this.state.films}
           keyExtractor={ (item) => item.id.toString() }
-          renderItem={ ({item}) => <FilmItems film={item} /> }
+          renderItem={ ({item}) => <FilmItem film={item} displayDetailForFilm={this._displayDetailForFilm}/> }
           onEndReachedThreshold={0.5}
           onEndReached={() => {
             if (this.page < this.totalPages) {
@@ -86,7 +92,7 @@ export default class Search extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    marginTop: 20
+    // marginTop: 20
   },
   textinput: {
     marginLeft: 5,
